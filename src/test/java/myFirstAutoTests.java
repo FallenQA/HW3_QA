@@ -1,7 +1,6 @@
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class myFirstAutoTests {
    @Test
@@ -9,5 +8,7 @@ public class myFirstAutoTests {
     void myFirstAT() {
        open("https://demoqa.com/automation-practice-form");
        $("#firstName").setValue("Grena");
-    }
+       $("[id=lastName]").setValue("Ukropovi4");
+       $("[id=userEmail]").setValue("Ukropov.Grena@ml.com");
+   }
 }
