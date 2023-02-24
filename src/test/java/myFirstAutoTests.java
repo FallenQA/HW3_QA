@@ -34,7 +34,7 @@ public class myFirstAutoTests {
       $(By.cssSelector("label[for='hobbies-checkbox-1']")).click();
       $(By.cssSelector("label[for='hobbies-checkbox-2']")).click();
       $(By.cssSelector("label[for='hobbies-checkbox-3']")).click();
-      File fileUpFoto = new File("C:\\Users\\Admin\\Pictures\\newfoto.jpg");
+      File fileUpFoto = new File("src\\pictures\\newfoto.jpg");
       $("#uploadPicture").uploadFile(fileUpFoto);
       $("#currentAddress").setValue("USA");
       $("#state").click();
