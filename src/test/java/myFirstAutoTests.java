@@ -20,12 +20,13 @@ public class myFirstAutoTests {
 
     void myFirstAT() {
        open("automation-practice-form");
+       executeJavaScript("$('#fixedban').remove()");
+       executeJavaScript("$('footer').remove()");
        $("#firstName").setValue("Grena");
        $("[id=lastName]").setValue("Ukropovi4");
        $("[id=userEmail]").setValue("Ukropov.Grena@ml.com");
       $("#gender-radio-1").sendKeys(" ");
        $("[id=userNumber]").setValue("7916911102");
- //    $(By.cssSelector("label[for='gender-radio-1']")).click();
       $("#dateOfBirthInput").click();
       $(by("class", "react-datepicker__year-select")).$(byText("1911")).click();
       $(by("class", "react-datepicker__month-select")).$(byText("November")).click();
@@ -43,8 +44,6 @@ public class myFirstAutoTests {
       $("#react-select-4-option-1").click();
       $("#submit").click();
 
-
-//        Проверки
        $(".modal-header").shouldHave(text("Thanks for submitting the form"));
        $("tbody tr:nth-child(1) td:nth-child(2)").shouldHave(text("Grena Ukropovi4"));
        $("tbody tr:nth-child(2) td:nth-child(2)").shouldHave(text("Ukropov.Grena@ml.com"));
