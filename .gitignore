@@ -1,0 +1,10 @@
+/.idea
+/.gradle
+*.log
+!build.gradle
+/build
+!**/src/main/**
+!**/src/test/**
+*.iws
+*.iml
+*.ipr
