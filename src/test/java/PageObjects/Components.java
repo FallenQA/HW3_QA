@@ -17,7 +17,8 @@ public class Components {
 
     gender = $("#genterWrapper"),
 
-    phoneNumber = $("[id=userNumber]");
+    phoneNumber = $("[id=userNumber]"),
+    subjects =  $("#subjectsInput");
 
     public Components openPage() {
         open("https://demoqa.com/automation-practice-form");
@@ -72,6 +73,10 @@ public class Components {
         $("tbody tr:nth-child(8) td:nth-child(2)").shouldHave(text("newfoto.jpg"));
         $("tbody tr:nth-child(9) td:nth-child(2)").shouldHave(text("USA"));
         $("tbody tr:nth-child(10) td:nth-child(2)").shouldHave(text("Rajasthan Jaiselmer"));
+        return this;
+    }
+    public Components setSubjectsInput(String value) {
+       subjects.setValue(value).pressEnter();
         return this;
     }
 }

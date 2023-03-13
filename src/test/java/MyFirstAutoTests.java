@@ -28,8 +28,9 @@ public class MyFirstAutoTests {
                 .eMail("Ukropov.Grena@ml.com")
                 .setGender("Male")
                 .setPhoneNumber("7916911102")
-                .setDateOfBirthInput("1911", "November", "11");
-        $("#subjectsInput").setValue("Hindi").pressEnter();
+                .setDateOfBirthInput("1911", "November", "11"),
+        .setSubjectsInput("Hindi");
+
         $(By.cssSelector("label[for='hobbies-checkbox-1']")).click();
         $(By.cssSelector("label[for='hobbies-checkbox-2']")).click();
         $(By.cssSelector("label[for='hobbies-checkbox-3']")).click();
