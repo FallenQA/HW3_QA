@@ -1,6 +1,9 @@
 package PageObjects;
 
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.By;
+
+import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.by;
@@ -10,15 +13,20 @@ import static org.openqa.selenium.remote.tracing.EventAttribute.setValue;
 
 public class Components {
     private final String TITLE_TEXT = "Student Registration Form";
-    private SelenideElement
-            firstNameInput = $("#firstName"),
+    private SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("[id=lastName]"),
             userEmailInput = $("[id=userEmail]"),
+            gender = $("#genterWrapper"),
+            phoneNumber = $("[id=userNumber]"),
+            subjects = $("#subjectsInput"),
+            submit = $("#submit"),
+            birthday = $("#dateOfBirthInput"),
+            theMonth = $(".react-datepicker__month-select"),
+            theYear = $(".react-datepicker__year-select"),
+            checkboxSport = $(By.cssSelector("label[for='hobbies-checkbox-1']")),
+            checkboxReading = $(By.cssSelector("label[for='hobbies-checkbox-2']")),
+            checkboxMusic = $(By.cssSelector("label[for='hobbies-checkbox-3']"));
 
-    gender = $("#genterWrapper"),
-
-    phoneNumber = $("[id=userNumber]"),
-    subjects =  $("#subjectsInput");
 
     public Components openPage() {
         open("https://demoqa.com/automation-practice-form");
@@ -52,12 +60,52 @@ public class Components {
         phoneNumber.setValue(value);
         return this;
     }
-    public Components setDateOfBirthInput (String year, String month, String day) {
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption(month);
-        $(".react-datepicker__year-select").selectOption(year);
-        $(".react-datepicker__day--0" + day +
-                ":not(.react-datepicker__day--outside-month)").click();
+
+    public Components setDateOfBirthInput(String year, String month, String day) {
+        birthday.click();
+        theMonth.selectOption(month);
+        theYear.selectOption(year);
+        $(".react-datepicker__day--0" + day + ":not(.react-datepicker__day--outside-month)").click();
+        return this;
+    }
+
+    public Components setSubjectsInput(String value) {
+        subjects.setValue(value).pressEnter();
+        return this;
+    }
+
+    public Components setAllCheckboxes() {
+        checkboxSport.click();
+        checkboxReading.click();
+        checkboxMusic.click();
+        return this;
+    }
+
+    public Components setUploadFile() {
+        File fileUpFoto = new File("src\\pictures\\newfoto.jpg");
+        $("#uploadPicture").uploadFile(fileUpFoto);
+        return this;
+    }
+
+    public Components setCurrentAddress(String value) {
+        $("#currentAddress").setValue(value);
+        return this;
+    }
+
+    public Components setState() {
+        $("#state").click();
+        $("#react-select-3-option-3").click();
+        return this;
+    }
+
+    public Components setCity() {
+        $("#city").click();
+        $("#react-select-4-option-1").click();
+        return this;
+    }
+
+    public Components clickSubmit() {
+        submit.click();
         return this;
     }
 
@@ -75,8 +123,5 @@ public class Components {
         $("tbody tr:nth-child(10) td:nth-child(2)").shouldHave(text("Rajasthan Jaiselmer"));
         return this;
     }
-    public Components setSubjectsInput(String value) {
-       subjects.setValue(value).pressEnter();
-        return this;
-    }
+
 }

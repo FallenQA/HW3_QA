@@ -28,22 +28,15 @@ public class MyFirstAutoTests {
                 .eMail("Ukropov.Grena@ml.com")
                 .setGender("Male")
                 .setPhoneNumber("7916911102")
-                .setDateOfBirthInput("1911", "November", "11"),
-        .setSubjectsInput("Hindi");
-
-        $(By.cssSelector("label[for='hobbies-checkbox-1']")).click();
-        $(By.cssSelector("label[for='hobbies-checkbox-2']")).click();
-        $(By.cssSelector("label[for='hobbies-checkbox-3']")).click();
-        File fileUpFoto = new File("src\\pictures\\newfoto.jpg");
-        $("#uploadPicture").uploadFile(fileUpFoto);
-        $("#currentAddress").setValue("USA");
-        $("#state").click();
-        $("#react-select-3-option-3").click();
-        $("#city").click();
-        $("#react-select-4-option-1").click();
-        $("#submit").click();
-
-        registrationPage.checkResults();
+                .setDateOfBirthInput("1911", "November", "11")
+                .setSubjectsInput("Hindi")
+                .setAllCheckboxes()
+                .setUploadFile()
+                .setCurrentAddress("USA")
+                .setState()
+                .setCity()
+                .clickSubmit()
+                .checkResults();
 
     }
 }
