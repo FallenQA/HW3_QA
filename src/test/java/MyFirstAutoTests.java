@@ -1,3 +1,4 @@
+import PageObjects.Components;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -11,26 +12,23 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class MyFirstAutoTests {
+    Components registrationPage = new Components();
+
     @BeforeAll
     static void beforeAll() {
         Configuration.browserSize = "1920x1080";
-        Configuration.baseUrl = "https://demoqa.com/";
     }
 
     @Test
     void myFirstAT() {
-        open("automation-practice-form");
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
-        $("#firstName").setValue("Grena");
-        $("[id=lastName]").setValue("Ukropovi4");
-        $("[id=userEmail]").setValue("Ukropov.Grena@ml.com");
-        $("#gender-radio-1").sendKeys(" ");
-        $("[id=userNumber]").setValue("7916911102");
-        $("#dateOfBirthInput").click();
-        $(by("class", "react-datepicker__year-select")).$(byText("1911")).click();
-        $(by("class", "react-datepicker__month-select")).$(byText("November")).click();
-        $(by("class", "react-datepicker__month-container")).$(byText("11")).click();
+        String userName = "Grena";
+        registrationPage.openPage()
+                .setFirstName(userName)
+                .lastName()
+                .eMail("Ukropov.Grena@ml.com")
+                .setGender("Male")
+                .setPhoneNumber("7916911102")
+                .setDateOfBirthInput("1911", "November", "11");
         $("#subjectsInput").setValue("Hindi").pressEnter();
         $(By.cssSelector("label[for='hobbies-checkbox-1']")).click();
         $(By.cssSelector("label[for='hobbies-checkbox-2']")).click();
@@ -44,16 +42,7 @@ public class MyFirstAutoTests {
         $("#react-select-4-option-1").click();
         $("#submit").click();
 
-        $(".modal-header").shouldHave(text("Thanks for submitting the form"));
-        $("tbody tr:nth-child(1) td:nth-child(2)").shouldHave(text("Grena Ukropovi4"));
-        $("tbody tr:nth-child(2) td:nth-child(2)").shouldHave(text("Ukropov.Grena@ml.com"));
-        $("tbody tr:nth-child(3) td:nth-child(2)").shouldHave(text("Male"));
-        $("tbody tr:nth-child(4) td:nth-child(2)").shouldHave(text("7916911102"));
-        $("tbody tr:nth-child(5) td:nth-child(2)").shouldHave(text("11 November,1911"));
-        $("tbody tr:nth-child(6) td:nth-child(2)").shouldHave(text("Hindi"));
-        $("tbody tr:nth-child(7) td:nth-child(2)").shouldHave(text("Sports, Reading, Music"));
-        $("tbody tr:nth-child(8) td:nth-child(2)").shouldHave(text("newfoto.jpg"));
-        $("tbody tr:nth-child(9) td:nth-child(2)").shouldHave(text("USA"));
-        $("tbody tr:nth-child(10) td:nth-child(2)").shouldHave(text("Rajasthan Jaiselmer"));
+        registrationPage.checkResults();
+
     }
 }
