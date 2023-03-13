@@ -6,10 +6,8 @@ import org.openqa.selenium.By;
 import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.by;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static org.openqa.selenium.remote.tracing.EventAttribute.setValue;
 
 public class Components {
     private final String TITLE_TEXT = "Student Registration Form";
