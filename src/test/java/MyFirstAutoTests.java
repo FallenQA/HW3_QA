@@ -20,7 +20,7 @@ public class MyFirstAutoTests {
                 .eMail("Ukropov.Grena@ml.com")
                 .setGender("Male")
                 .setPhoneNumber("7916911102")
-                .setDateOfBirthInput("1911", "November", "11")
+                .setDate("1911", "November", "11")
                 .setSubjectsInput("Hindi")
                 .setAllCheckboxes()
                 .setUploadFile()

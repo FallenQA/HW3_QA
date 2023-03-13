@@ -10,6 +10,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Components {
+    CalendarComponent calendarComponent = new CalendarComponent();
     private final String TITLE_TEXT = "Student Registration Form";
     private SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("[id=lastName]"),
@@ -59,7 +60,7 @@ public class Components {
         return this;
     }
 
-    public Components setDateOfBirthInput(String year, String month, String day) {
+    public Components setDate(String year, String month, String day) {
         birthday.click();
         theMonth.selectOption(month);
         theYear.selectOption(year);
